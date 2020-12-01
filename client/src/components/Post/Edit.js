@@ -8,10 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editPost } from "../../redux/actions/postActions";
-import PostCurdService from "../../utils/PostCurdService";
+import { actionTypes } from "../../redux/actions/postActions";
 
-const PostCurd = new PostCurdService();
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -50,8 +48,10 @@ export default function EditPost() {
     var postId = urlParams.get("post");
     let post = posts.filter((post) => post._id === postId);
     console.log(post);
-    setTitle(post[0].title);
-    setContent(post[0].content);
+    if (post[0]) {
+      setTitle(post[0].title);
+      setContent(post[0].content);
+    }
   }
 
   useEffect(getPost(), []);
@@ -65,14 +65,8 @@ export default function EditPost() {
       content: content,
     };
 
-    PostCurd.update(urlParams.get("post"), post)
-      .then((res) => {
-        dispatch(editPost(res.data));
-        enqueueSnackbar("Post Update Successfully", { variant: "success" });
-      })
-      .catch((err) => {
-        enqueueSnackbar("Post Update Fail", { variant: "error" });
-      });
+    var id = urlParams.get("post");
+    dispatch({ type: actionTypes.EDIT_POST_SAGA, id, post });
   }
 
   return (

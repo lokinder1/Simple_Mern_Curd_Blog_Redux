@@ -8,10 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addPost } from "../../redux/actions/postActions";
-import PostCurdService from "../../utils/PostCurdService";
+import { actionTypes } from "../../redux/actions/postActions";
 
-const PostCurd = new PostCurdService();
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -53,15 +51,7 @@ export default function CreatePost() {
     };
 
     console.log(post);
-    PostCurd.create(post)
-      .then((res) => {
-        enqueueSnackbar("Post created Successfully", { variant: "success" });
-        dispatch(addPost(res.data));
-        console.log(res.data);
-      })
-      .catch((err) => {
-        enqueueSnackbar("Post Creation Fail", { variant: "error" });
-      });
+    dispatch({ type: actionTypes.ADD_POST_SAGA, post });
   }
 
   return (

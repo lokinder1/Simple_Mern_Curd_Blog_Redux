@@ -7,6 +7,7 @@ export const InitialState = {
 };
 
 const postReducer = (state = InitialState, action) => {
+  
   switch (action.type) {
     case actionTypes.LOAD_POSTS: {
       return {

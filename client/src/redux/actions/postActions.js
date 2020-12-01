@@ -6,6 +6,10 @@ export const actionTypes = {
   DELETE_POST: "DELETE_POST",
   EDIT_POST: "EDIT_POST",
   LOAD_POSTS: "LOAD_POSTS",
+  ADD_POST_SAGA: "ADD_POST_SAGA",
+  DELETE_POST_SAGA: "DELETE_POST_SAGA",
+  EDIT_POST_SAGA: "EDIT_POST_SAGA",
+  LOAD_POSTS_SAGA: "LOAD_POSTS_SAGA",
 };
 
 /*
@@ -13,7 +17,6 @@ export const actionTypes = {
  */
 
 export function loadPosts(data) {
-  console.log(data);
   return { type: actionTypes.LOAD_POSTS, data };
 }
 

@@ -16,10 +16,7 @@ import { useSnackbar } from "notistack";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deletePost, loadPosts } from "../../redux/actions/postActions";
-import PostCurdService from "../../utils/PostCurdService";
-
-const PostCurd = new PostCurdService();
+import { actionTypes } from "../../redux/actions/postActions";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -73,23 +70,11 @@ export default function ListPosts() {
   };
 
   async function getAllPosts() {
-    const result = await PostCurd.read().catch((err) => {
-      enqueueSnackbar("Posts Loading Failed", { variant: "error" });
-      console.log("error :  " + err);
-    });
-    dispatch(loadPosts(result.data));
-    console.log(posts);
+    dispatch({ type: actionTypes.LOAD_POSTS_SAGA });
   }
 
   function deletePostByID(id) {
-    PostCurd.delete(id)
-      .then((res) => {
-        enqueueSnackbar("Post Deleted Successfully", { variant: "success" });
-        dispatch(deletePost(id));
-      })
-      .catch((err) => {
-        enqueueSnackbar("Post Deletion Failed", { variant: "error" });
-      });
+    dispatch({ type: actionTypes.DELETE_POST_SAGA, id });
   }
 
   useEffect(getAllPosts(), []);
