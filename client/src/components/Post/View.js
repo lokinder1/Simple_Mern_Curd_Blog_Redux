@@ -48,7 +48,7 @@ export default function ViewPost() {
         <Typography variant="h5">{post.title}</Typography>
       </Paper>
       <Paper className={classes.content}>
-        <Typography variant="content1">{post.content}</Typography>
+        <Typography variant="body1">{post.content}</Typography>
       </Paper>
     </Container>
   );
