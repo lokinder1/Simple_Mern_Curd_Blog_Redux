@@ -92,7 +92,7 @@ export default function ListPosts() {
       });
   }
 
-  useEffect(getAllPosts(), []);
+  useEffect(()=>{getAllPosts()}, []);
 
   var loadPostsCheck = true;
   if (!posts) {

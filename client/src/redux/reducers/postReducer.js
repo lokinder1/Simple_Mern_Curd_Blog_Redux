@@ -28,7 +28,7 @@ const postReducer = (state = InitialState, action) => {
       return {
         ...state,
         posts: state.posts.map((post) =>
-          post._id === action.data._id ? { post: action.data } : post
+          post._id === action.data._id ? ( action.data ) : post
         ),
       };
     default:
