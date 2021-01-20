@@ -8,6 +8,9 @@ it's made by using following frontend technologies
 - ExpressJS
 - MaterialUI
 
+## Branches
+main - manage local state by redux only 
+redux-saga - manage local state by redux and redux-saga 
 ## How To Run 
 ```
 - Server
