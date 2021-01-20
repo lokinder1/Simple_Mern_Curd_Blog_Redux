@@ -77,7 +77,7 @@ export default function ListPosts() {
     dispatch({ type: actionTypes.DELETE_POST_SAGA, id });
   }
 
-  useEffect(getAllPosts(), []);
+  useEffect(()=>{getAllPosts()}, []);
 
   var loadPostsCheck = true;
   if (!posts) {

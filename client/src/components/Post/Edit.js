@@ -54,7 +54,7 @@ export default function EditPost() {
     }
   }
 
-  useEffect(getPost(), []);
+  useEffect(()=>{getPost()}, []);
 
   function onSubmit(e) {
     e.preventDefault();
