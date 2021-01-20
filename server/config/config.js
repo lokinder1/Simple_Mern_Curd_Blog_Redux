@@ -1,4 +1,4 @@
 module.exports = {
   databaseUrl: "mongodb://localhost:27017/node-curd-server",
-  serverPort: "8094",
+  serverPort: "8092",
 };
