@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -14,7 +13,8 @@ mongoose.Promise = global.Promise;
 mongoose
   .connect(config.databaseUrl, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => {
     console.log("Successfully connected to the database");
@@ -27,11 +27,8 @@ mongoose
 // create express app
 const app = express();
 
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-
 // parse requests of content-type - application/json
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(cors());
 
