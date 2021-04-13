@@ -1,13 +1,11 @@
-import React, { Fragment } from "react";
-import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "./theme/index";
+import { ThemeProvider } from "@material-ui/core/styles";
 import { SnackbarProvider } from "notistack";
-import Home from './home'
+import React, { Fragment } from "react";
+import Home from "./home";
+import theme from "./theme/index";
 
-
-
-export default () => (
+const App = () => (
   <ThemeProvider theme={theme}>
     <SnackbarProvider maxSnack={3}>
       <CssBaseline />
@@ -17,3 +15,5 @@ export default () => (
     </SnackbarProvider>
   </ThemeProvider>
 );
+
+export default App;

@@ -3,10 +3,10 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import PostCurdService from "../../utils/PostCurdService";
+import { useSelector } from "react-redux";
+// import PostCurdService from "../../utils/PostCurdService";
 
-const PostCurd = new PostCurdService();
+// const PostCurd = new PostCurdService();
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -34,7 +34,6 @@ export default function ViewPost() {
   const [post, setPost] = useState([]);
   const posts = useSelector((state) => state.postsList.posts);
 
-
   async function getPost() {
     var urlParams = new URLSearchParams(window.location.search);
     var postId = urlParams.get("post");
@@ -49,10 +48,10 @@ export default function ViewPost() {
   return (
     <Container maxWidth="xl">
       <Paper className={classes.title}>
-        <Typography variant="h5">{post? post.title:''}</Typography>
+        <Typography variant="h5">{post ? post.title : ""}</Typography>
       </Paper>
       <Paper className={classes.content}>
-        <Typography variant="body1">{post? post.content: ''}</Typography>
+        <Typography variant="body1">{post ? post.content : ""}</Typography>
       </Paper>
     </Container>
   );

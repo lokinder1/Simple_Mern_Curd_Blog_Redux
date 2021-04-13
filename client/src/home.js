@@ -16,8 +16,7 @@ const useStyles = makeStyles((theme) => ({
     "overflow-x": "hidden",
   },
   main: {
-    marginBottom: "-1px",
-    minHeight: "88vh",
+    minHeight: "calc(100vh - 120px)",
   },
   paper: {
     height: 140,

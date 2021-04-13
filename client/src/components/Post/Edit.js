@@ -67,6 +67,8 @@ export default function EditPost() {
 
     var id = urlParams.get("post");
     dispatch({ type: actionTypes.EDIT_POST_SAGA, id, post });
+    enqueueSnackbar("Post Updated Successfully", { variant: "success" });
+
   }
 
   return (

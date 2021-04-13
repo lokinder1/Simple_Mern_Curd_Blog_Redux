@@ -2,11 +2,12 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import PostCurdService from "../../utils/PostCurdService";
 import {
   actionTypes,
-
   addPost,
   deletePost,
-  editPost, loadPosts
+  editPost,
+  loadPosts,
 } from "../actions/postActions";
+
 
 const PostCurd = new PostCurdService();
 

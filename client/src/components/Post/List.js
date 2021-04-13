@@ -75,6 +75,8 @@ export default function ListPosts() {
 
   function deletePostByID(id) {
     dispatch({ type: actionTypes.DELETE_POST_SAGA, id });
+    enqueueSnackbar("Post Deleted Successfully", { variant: "success" });
+
   }
 
   useEffect(()=>{getAllPosts()}, []);

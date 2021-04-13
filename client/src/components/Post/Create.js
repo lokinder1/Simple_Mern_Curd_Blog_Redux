@@ -10,7 +10,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { actionTypes } from "../../redux/actions/postActions";
 
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -52,6 +51,8 @@ export default function CreatePost() {
 
     console.log(post);
     dispatch({ type: actionTypes.ADD_POST_SAGA, post });
+
+    enqueueSnackbar("Post Created Successfully", { variant: "success" });
   }
 
   return (
